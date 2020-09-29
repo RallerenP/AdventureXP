@@ -65,7 +65,7 @@ public class UserRepository implements IRepository<User, UserDTO> {
     }
 
     @Override
-    public boolean delete(UserDTO dto) {
+    public boolean delete(int id) {
 
         return true;
     }

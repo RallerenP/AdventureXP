@@ -8,6 +8,6 @@ public interface IRepository<E, DTO> {
     E read(int id);
     List<E> readAll();
     E update(DTO dto);
-    boolean delete(DTO dto);
+    boolean delete(int id);
 
 }
