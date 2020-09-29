@@ -89,7 +89,7 @@ public class ActivityRepository implements IRepository<Activity, ActivityDTO> {
     }
 
     @Override
-    public boolean delete(ActivityDTO dto) {
+    public boolean delete(int id) {
         return false;
     }
 
