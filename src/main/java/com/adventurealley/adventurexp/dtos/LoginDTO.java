@@ -1,8 +1,6 @@
 package com.adventurealley.adventurexp.dtos;
 
-public class UserDTO {
+public class LoginDTO {
     private String username;
     private String password;
-    private String role;
-    private String email;
 }
