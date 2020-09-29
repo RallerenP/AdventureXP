@@ -9,14 +9,6 @@ public class ActivityDTO {
         this.name = name;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public int getMinAge() {
         return minAge;
     }
@@ -49,10 +41,27 @@ public class ActivityDTO {
         this.price = price;
     }
 
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
     private String name;
-    private String time;
     private int minAge;
     private int minHeightCm;
     private int minPeriodMin;
     private double price;
+    private String endTime;
+    private String startTime;
 }
