@@ -95,6 +95,7 @@ public class ActivityRepository implements IRepository<Activity, ActivityDTO> {
 
     private Activity load(SqlRowSet rs) {
         return new Activity(
+                rs.getInt("id"),
                 rs.getString("name"),
                 rs.getInt("minAge"),
                 rs.getInt("minHeightCm"),

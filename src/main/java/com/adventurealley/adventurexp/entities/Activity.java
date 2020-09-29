@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 public class Activity {
 
+    private int id;
     private String name;
     private int minAge;
     private int minHeightCM;
@@ -13,7 +14,8 @@ public class Activity {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public Activity(String name, int minAge, int minHeightCM, int minPeriodMin, double price, LocalDateTime startTime, LocalDateTime endTime) {
+    public Activity(int id, String name, int minAge, int minHeightCM, int minPeriodMin, double price, LocalDateTime startTime, LocalDateTime endTime) {
+        this.id = id;
         this.name = name;
         this.minAge = minAge;
         this.minHeightCM = minHeightCM;
@@ -21,6 +23,14 @@ public class Activity {
         this.price = price;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
