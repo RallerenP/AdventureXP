@@ -1,11 +1,19 @@
 package com.adventurealley.adventurexp.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Entity
 public class Activity {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String name;
     private int minAge;
     private int minHeightCM;
@@ -14,18 +22,7 @@ public class Activity {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public Activity(int id, String name, int minAge, int minHeightCM, int minPeriodMin, double price, LocalDateTime startTime, LocalDateTime endTime) {
-        this.id = id;
-        this.name = name;
-        this.minAge = minAge;
-        this.minHeightCM = minHeightCM;
-        this.minPeriodMin = minPeriodMin;
-        this.price = price;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
