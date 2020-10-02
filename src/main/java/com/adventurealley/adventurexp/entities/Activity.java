@@ -85,4 +85,19 @@ public class Activity {
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Activity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", minAge=" + minAge +
+                ", minHeightCM=" + minHeightCM +
+                ", minPeriodMin=" + minPeriodMin +
+                ", price=" + price +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                '}';
+    }
 }
