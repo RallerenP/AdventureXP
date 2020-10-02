@@ -1,24 +1,12 @@
-package com.adventurealley.adventurexp.entities;
+package com.adventurealley.adventurexp.dtos;
 
-import javax.persistence.*;
-
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
+public class SignupDTO {
 
     private String username;
     private String password;
     private String email;
     private String firstName;
     private String lastName;
-
-
 
     public String getUsername() {
         return username;
@@ -36,28 +24,12 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {

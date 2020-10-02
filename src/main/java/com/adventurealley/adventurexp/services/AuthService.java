@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService implements IAuthService{
-    IUserService userService = new UserService();
+    //IUserService userService = new UserService();
 
     public void AuthService(IUserService userService){
 
