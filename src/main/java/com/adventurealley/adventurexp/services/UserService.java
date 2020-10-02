@@ -5,7 +5,6 @@ import com.adventurealley.adventurexp.dtos.SignupDTO;
 import com.adventurealley.adventurexp.dtos.UserDTO;
 import com.adventurealley.adventurexp.entities.Role;
 import com.adventurealley.adventurexp.entities.User;
-import com.adventurealley.adventurexp.repositories.IRepository;
 import com.adventurealley.adventurexp.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
