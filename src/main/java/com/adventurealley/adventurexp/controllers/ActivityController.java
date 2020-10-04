@@ -3,7 +3,7 @@ package com.adventurealley.adventurexp.controllers;
 import com.adventurealley.adventurexp.dtos.CreateActivityDTO;
 import com.adventurealley.adventurexp.entities.Activity;
 import com.adventurealley.adventurexp.services.IActivityService;
-import org.springframework.data.repository.query.Param;
+import org.json.JSONArray;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,19 +22,25 @@ public class ActivityController
     @PostMapping("/api/activities")
     ResponseEntity<String> createActivity(@RequestBody CreateActivityDTO createActivityDTO) {
         Activity a = activityService.createActivity(createActivityDTO);
-        return new ResponseEntity<>(a.toString(), HttpStatus.CREATED);
+        return new ResponseEntity<>(a.toJSON().toString(), HttpStatus.CREATED);
     }
 
     @GetMapping("/api/activities")
     ResponseEntity<String> getAllActivities() {
         List<Activity> activities = activityService.getAllActivities();
-        return new ResponseEntity<>(activities.toString(), HttpStatus.OK);
+
+        JSONArray jarr = new JSONArray();
+        for(Activity a : activities) {
+            jarr.put(a);
+        }
+
+        return new ResponseEntity<>(jarr.toString(), HttpStatus.OK);
     }
 
     @GetMapping("/api/activities/{id}")
     ResponseEntity<String> getActivityById(@PathVariable("id") long id) {
         Activity a = activityService.getById(id);
-        return new ResponseEntity<>(a.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(a.toJSON().toString(), HttpStatus.OK);
     }
 
 }

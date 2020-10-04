@@ -2,14 +2,10 @@ package com.adventurealley.adventurexp.services;
 
 import com.adventurealley.adventurexp.dtos.LoginDTO;
 import com.adventurealley.adventurexp.dtos.SignupDTO;
-import com.adventurealley.adventurexp.dtos.UserDTO;
 import com.adventurealley.adventurexp.entities.Role;
 import com.adventurealley.adventurexp.entities.User;
 import com.adventurealley.adventurexp.repositories.UserRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService implements IUserService{
