@@ -19,5 +19,5 @@ import java.util.Dictionary;
 import java.util.List;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
-
+    Activity getById(long id);
 }
