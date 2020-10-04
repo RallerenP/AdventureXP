@@ -23,11 +23,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
-    String loginScreen() {
-        return "login";
-    }
-
     @PostMapping("/api/signup")
     ResponseEntity<String> signup(@RequestBody SignupDTO signupDTO) {
         //Create DTO and send down to DB through service layer
@@ -35,7 +30,7 @@ public class UserController {
         return new ResponseEntity<>("success", HttpStatus.CREATED);
     }
 
-    @GetMapping("/api/login")
+    @PostMapping("/api/login")
     ResponseEntity<String> login(@RequestBody LoginDTO loginDTO, HttpSession session) {
         User u = userService.authenticateUser(loginDTO);
         if (u == null) {
