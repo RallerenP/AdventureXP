@@ -2,6 +2,7 @@ package com.adventurealley.adventurexp.services;
 
 import com.adventurealley.adventurexp.dtos.ActivityDTO;
 import com.adventurealley.adventurexp.dtos.CreateActivityDTO;
+import com.adventurealley.adventurexp.dtos.DeleteActivityDTO;
 import com.adventurealley.adventurexp.entities.Activity;
 import com.adventurealley.adventurexp.repositories.ActivityRepository;
 import org.springframework.stereotype.Service;
@@ -51,4 +52,11 @@ public class ActivityService implements IActivityService {
     public Activity getById(long id) {
         return activityRepository.getById(id);
     }
+
+    @Override
+    public void delete(long id) {
+        activityRepository.deleteById( id);
+
+    }
+
 }

@@ -10,4 +10,5 @@ public interface IUserService {
     User authenticateUser(LoginDTO loginDTO);
     User getUserByUsername(String username);
     User getUserById(Long userId);
+
 }
