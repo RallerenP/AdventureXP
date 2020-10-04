@@ -1,9 +1,12 @@
 package com.adventurealley.adventurexp.entities;
 
+import com.adventurealley.adventurexp.util.JSONable;
+import org.json.JSONObject;
+
 import javax.persistence.*;
 
 @Entity
-public class User {
+public class User implements JSONable {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -74,5 +77,16 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        json.put("username", getUsername());
+        json.put("email", getEmail());
+        json.put("firstName", getFirstName());
+        json.put("lastName", getLastName());
+        json.put("role", getRole().toString());
+        return json;
     }
 }

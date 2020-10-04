@@ -1,5 +1,8 @@
 package com.adventurealley.adventurexp.entities;
 
+import com.adventurealley.adventurexp.util.JSONable;
+import org.json.JSONObject;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class Activity {
+public class Activity implements JSONable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,5 +102,17 @@ public class Activity {
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 '}';
+    }
+
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        json.put("name", getName());
+        json.put("minAge", getMinAge());
+        json.put("minHeightCm", getMinHeightCM());
+        json.put("minPeriodMin", getMinPeriodMin());
+        json.put("price", getPrice());
+        json.put("startTime", getStartTime().toString());
+        json.put("endTime", getEndTime().toString());
+        return json;
     }
 }

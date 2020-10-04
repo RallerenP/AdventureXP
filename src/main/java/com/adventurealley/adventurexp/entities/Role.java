@@ -1,8 +1,18 @@
 package com.adventurealley.adventurexp.entities;
 
 public enum Role {
-    EMPLOYEE,
-    CUSTOMER;
+    EMPLOYEE {
+        @Override
+        public String toString() {
+            return "Employee";
+        }
+    },
+    CUSTOMER {
+        @Override
+        public String toString() {
+            return "Customer";
+        }
+    };
 
     public static int getID(Role role) {
         switch (role) {

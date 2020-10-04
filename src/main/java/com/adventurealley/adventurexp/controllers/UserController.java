@@ -42,7 +42,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
             session.setAttribute("user", u);
-            return new ResponseEntity<>(u.toString(), HttpStatus.OK);
+            return new ResponseEntity<>(u.toJSON().toString(), HttpStatus.OK);
         }
     }
 
