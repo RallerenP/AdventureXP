@@ -43,4 +43,12 @@ public class ActivityController
         return new ResponseEntity<>(a.toJSON().toString(), HttpStatus.OK);
     }
 
+    @DeleteMapping("/api/activities/{id}")
+    ResponseEntity<String> deleteById (@PathVariable("id") long id) {
+        activityService.delete( id );
+        return null;
+
+
+    }
+
 }
