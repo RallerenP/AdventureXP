@@ -42,4 +42,14 @@ public class UserService implements IUserService{
         userRepository.save(userTmp);
         return userRepository.findByUsername(userTmp.getUsername());
     }
+
+    @Override
+    public User authenticateUser(LoginDTO loginDTO) {
+        User u = userRepository.findByUsername(loginDTO.getUsername());
+        if (u.getPassword().equals(loginDTO.getPassword())) {
+            return u;
+        } else {
+            return null;
+        }
+    }
 }
