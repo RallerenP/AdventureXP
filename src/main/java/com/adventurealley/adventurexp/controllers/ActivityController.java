@@ -31,7 +31,7 @@ public class ActivityController
 
         JSONArray jarr = new JSONArray();
         for(Activity a : activities) {
-            jarr.put(a);
+            jarr.put(a.toJSON());
         }
 
         return new ResponseEntity<>(jarr.toString(), HttpStatus.OK);

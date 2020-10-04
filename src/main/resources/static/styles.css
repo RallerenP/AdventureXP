@@ -3,17 +3,11 @@
     padding: 18px;
 }
 
+
+
 #main-header{
     background-color: #008000;
     color: coral;
-}
-.header-left{
-    float: left;
-}
-
-.header-right {
-    float: right;
-    margin: 8px 0 0 10px;
 }
 
 #events{
