@@ -46,4 +46,9 @@ public class ActivityService implements IActivityService {
     {
         return activityRepository.findAll();
     }
+
+    @Override
+    public Activity getById(long id) {
+        return activityRepository.getById(id);
+    }
 }

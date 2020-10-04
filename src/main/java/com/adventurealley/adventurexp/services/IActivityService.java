@@ -9,4 +9,5 @@ import java.util.List;
 public interface IActivityService {
     Activity createActivity(CreateActivityDTO createActivityDto);
     List<Activity> getAllActivities();
+    Activity getById(long id);
 }
