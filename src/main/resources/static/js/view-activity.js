@@ -1,0 +1,15 @@
+$(document).ready(() => {
+    const card_template = $("#activity-card").text();
+
+    $.ajax({
+        type: 'GET',
+        url: '/api/activities',
+        success: handleResponse,
+        dataType: "json"
+    });
+
+    function handleResponse(activities) {
+            const compiler = _.template(card_template);
+            $('#card-container').append(compiler({ activity }));
+    }
+})
