@@ -1,6 +1,7 @@
 package com.adventurealley.adventurexp.controllers;
 
 import com.adventurealley.adventurexp.dtos.CreateActivityDTO;
+import com.adventurealley.adventurexp.dtos.EditActivityDTO;
 import com.adventurealley.adventurexp.entities.Activity;
 import com.adventurealley.adventurexp.entities.Role;
 import com.adventurealley.adventurexp.entities.User;
@@ -35,6 +36,14 @@ public class ActivityController
 
 
     }
+
+    @PutMapping("/api/activities/{id}")
+    ResponseEntity<String> editActivity(@PathVariable("id") long id, EditActivityDTO editActivityDTO) {
+
+        Activity a = activityService.editActivity(id, editActivityDTO);
+        return new ResponseEntity<>(a.toJSON().toString(), HttpStatus.OK);
+    }
+
 
     @GetMapping("/api/activities")
     ResponseEntity<String> getAllActivities() {
