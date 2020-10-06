@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Activity implements JSONable {
@@ -20,7 +21,6 @@ public class Activity implements JSONable {
     private String name;
     private int minAge;
     private int minHeightCM;
-    private int minPeriodMin;
     private double price;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -57,14 +57,6 @@ public class Activity implements JSONable {
         this.minHeightCM = minHeightCM;
     }
 
-    public int getMinPeriodMin() {
-        return minPeriodMin;
-    }
-
-    public void setMinPeriodMin(int minPeriodMin) {
-        this.minPeriodMin = minPeriodMin;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -97,7 +89,6 @@ public class Activity implements JSONable {
                 ", name='" + name + '\'' +
                 ", minAge=" + minAge +
                 ", minHeightCM=" + minHeightCM +
-                ", minPeriodMin=" + minPeriodMin +
                 ", price=" + price +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
@@ -105,14 +96,15 @@ public class Activity implements JSONable {
     }
 
     public JSONObject toJSON() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         JSONObject json = new JSONObject();
         json.put("name", getName());
         json.put("minAge", getMinAge());
         json.put("minHeightCm", getMinHeightCM());
-        json.put("minPeriodMin", getMinPeriodMin());
         json.put("price", getPrice());
-        json.put("startTime", getStartTime().toString());
-        json.put("endTime", getEndTime().toString());
+        json.put("startTime", getStartTime().format(formatter));
+        json.put("endTime", getEndTime().format(formatter));
+        json.put("id", getId());
         return json;
     }
 }

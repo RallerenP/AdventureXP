@@ -6,5 +6,11 @@ async function getUser() {
     let user;
 
     const response = await fetch("/api/users");
-    return response.json();
+
+    if (response.status === 401) return null;
+    else return response.json();
+}
+
+function logout() {
+    $.ajax("/api/users/logout", { type: "GET", success: () =>  window.location = "/" });
 }

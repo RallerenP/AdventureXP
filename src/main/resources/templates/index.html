@@ -3,40 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
     <link rel="stylesheet" href="/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.11.6/page.js"></script>
     <script src="/js/lodash.min.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/views.js"></script>
     <script src="/js/auth.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header id="main-header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="m-4 navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
                 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a class="navbar-brand" href="/">AdventureXP</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/activities">Activities</a>
-        </li>
-    </ul>
-    <div class="form-inline my-2 my-lg-0">
-        <a class="btn btn-outline-success mx-2 my-2 my-sm-0">Sign Up</a>
-        <a class="btn btn-outline-success mx-2 my-2 my-sm-0" href="/login">Login</a>
-    </div>
-</div>
-</nav>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/activities">Activities</a>
+                </li>
+            </ul>
+            <div class="form-inline my-2 my-lg-0" id="auth-button-container">
+
+            </div>
+        </div>
+    </nav>
 </header>
 <div id="content-container">
 
@@ -47,5 +49,28 @@
         <p>Copyright &copy; 2020 My Website</p>
     </footer>
 </div>
+
+<script type="text/template" id="auth-button-template">
+    <% if (!isLoggedIn) { %>
+        <a class="btn btn-outline-success mx-2 my-2 my-sm-0">Sign Up</a>
+        <a class="btn btn-outline-success mx-2 my-2 my-sm-0" href="/login">Login</a>
+    <% } else { %>
+        <a class="btn btn-outline-danger mx-2 my-2 my-sm-0" href="/logout">Logout</a>
+    <% } %>
+</script>
+
+<script>
+    const init = async () => {
+        const button_template = $('#auth-button-template').text();
+
+        const compiler = _.template(button_template);
+        const user = await getUser();
+        const isLoggedIn = user !== null;
+        $('#auth-button-container').append(compiler({ isLoggedIn }));
+    }
+
+    init();
+</script>
+
 </body>
 </html>
