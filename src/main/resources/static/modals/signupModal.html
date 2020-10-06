@@ -1,0 +1,82 @@
+<div class="modal" tabindex="-1" id="modal">
+    <div class="modal-dialog modal-dialog-centered" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Signup</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Email, username, password, repeat password, first name, last name -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="usernameInput">Username</label>
+                    <input type="text" class="form-control" id="usernameInput">
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="firstNameInput">First Name</label>
+                        <input type="text" class="form-control" id="firstNameInput" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group col">
+                        <label for="lastNameInput">Last Name</label>
+                        <input type="text" class="form-control" id="lastNameInput">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailInput">Email</label>
+                    <input type="email" class="form-control" id="emailInput">
+                </div>
+                <div class="form-group">
+                    <label for="passwordInput">Password</label>
+                    <input type="password" class="form-control" id="passwordInput">
+                </div>
+                <div class="form-group" id="repeatPassword">
+                    <label for="passwordInput2">Repeat Password</label>
+                    <input type="password" class="form-control" id="passwordInput2">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="login-button" type="button" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#login-button').attr("disabled", "disabled");
+
+    function passwordEquals(password1, password2) {
+        return password1 === password2
+    }
+
+    $('#passwordInput2').on("input", (e) => {
+        if (!passwordEquals(e.target.value, $('#passwordInput').val())) {
+            $('#login-button').attr("disabled", "disabled")
+            $('#passwordInput2').addClass('is-invalid');
+        } else {
+            $('#passwordInput2').removeClass('is-invalid');
+            $('#login-button').attr("disabled", null)
+        }
+    })
+
+    $('#login-button').click(() => {
+        const signupData = {
+            firstName: $('#firstNameInput').val(),
+            lastName: $('#lastNameInput').val(),
+            username: $('#usernameInput').val(),
+            email: $('#emailInput').val(),
+            password: $('#passwordInput').val()
+        }
+        $.ajax("/api/users/signup", {
+            type: "POST",
+            success: async (e) => {
+                window.location = url
+            },
+            data: JSON.stringify(signupData),
+            contentType: "application/json"
+        });
+    })
+
+</script>

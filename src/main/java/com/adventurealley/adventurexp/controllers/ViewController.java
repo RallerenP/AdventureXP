@@ -20,6 +20,11 @@ public class ViewController {
         return "views/activity";
     }
 
+    @GetMapping("views/edit-activity")
+    String getEditActivityView() {
+        return "views/edit-activity";
+    }
+
     @GetMapping("/activities")
     String getActivities() {
         return "index";
@@ -32,6 +37,11 @@ public class ViewController {
 
     @GetMapping("/activity/**")
     String getActivity(){
+        return "index";
+    }
+
+    @GetMapping("/activities/edit/*")
+    String editActivity() {
         return "index";
     }
 }
