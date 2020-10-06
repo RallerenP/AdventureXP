@@ -38,7 +38,7 @@ public class ActivityController
     }
 
     @PutMapping("/api/activities/{id}")
-    ResponseEntity<String> editActivity(@PathVariable("id") long id, EditActivityDTO editActivityDTO) {
+    ResponseEntity<String> editActivity(@PathVariable("id") long id, @RequestBody EditActivityDTO editActivityDTO) {
 
         Activity a = activityService.editActivity(id, editActivityDTO);
         return new ResponseEntity<>(a.toJSON().toString(), HttpStatus.OK);

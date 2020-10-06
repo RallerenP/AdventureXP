@@ -1,0 +1,103 @@
+<div id="form-template"></div>
+<script type="text/template" id="edit-activity-template">
+    <% if (success) { %>
+        <div class="alert alert-success">
+            It has been done.
+        </div>
+    <% } %>
+    <div class="jumbotron jumbotron-fluid m-4 container mx-auto">
+        <fieldset class="m-4">
+            <legend>Edit Activity</legend>
+            <div class="form-group">
+                <label for="nameInput">Name</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="Activity Name" value="<%- activity.name %>" />
+            </div>
+            <div class="row">
+                <div class="form-group col">
+                    <label for="minAgeInput">Minimum Age (Max 20)</label>
+                    <input type="number" max="20" class="form-control" id="minAgeInput" value="<%- activity.minAge %>"/>
+                </div>
+                <div class="form-group col">
+                    <label for="minHeightInput">Minimum Height (in CM)</label>
+                    <input type="number" min="50" class="form-control" id="minHeightInput" value="<%- activity.minHeightCm %>"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col">
+                    <label for="priceInput">Price</label>
+                    <input type="number" class="form-control" id="priceInput" value="<%- activity.price %>" />
+                </div>
+                <div class="col"></div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col">
+                    <label for="startTimeInput">Start Time (ex. 2020-10-15 12:00)</label>
+                    <input type="datetime-local" class="form-control col" id="startTimeInput" value="<%- activity.startTime %>">
+                </div>
+                <div class="form-group col">
+                    <label for="endTimeInput">End Time (ex. 2020-10-15 12:00)</label>
+                    <input type="datetime-local" class="form-control col" id="endTimeInput" value="<%- activity.endTime %>">
+                </div>
+            </div>
+
+            <button class="btn btn-primary" id="submitBtn">Submit</button>
+        </fieldset>
+    </div>
+</script>
+
+<script type="text/javascript">
+    const url = location.href;
+    const id = url.substring(url.lastIndexOf('/') + 1, url.length);
+
+    console.log(id)
+
+    $.ajax({
+        type: 'GET',
+        url: `/api/activities/${id}`,
+        success: handleResponse,
+        dataType: "json"
+    });
+
+    function handleResponse(activity) {
+        const template = $('#edit-activity-template').text();
+
+        const compiler = _.template(template);
+
+        $('#form-template').html(compiler({ activity, success: false }));
+
+        function submitto() {
+            console.log("asdasdsa")
+            const name = $('#nameInput').val();
+            const minAge = $('#minAgeInput').val();
+            const minHeight = $('#minHeightInput').val();
+            const price = $('#priceInput').val();
+            const startTime = $('#startTimeInput').val();
+            const endTime = $('#endTimeInput').val();
+
+            const data = { name, minAge, minHeight, price, startTime, endTime }
+
+            console.log(data)
+
+            $.ajax(`/api/activities/${id}`, {
+                type: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: (e) => {
+                    console.log(e)
+                    $('#form-template').html(compiler({ activity, success: true }));
+                },
+                error: (e) => {
+                    console.error(e)
+                }
+            })
+        }
+
+        $('#submitBtn').click(submitto)
+    }
+
+
+
+
+
+</script>
