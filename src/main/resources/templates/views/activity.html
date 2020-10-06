@@ -1,17 +1,22 @@
+<div id="activity-container"></div>
+<script src="/js/view-activity.js"></script>
+<script type="text/template" id="activity-card">
  <div class="container">
     <div class="media">
-        <img src="../../static/gokart.jpg" class="align-self-center mr-3" alt="...">
+        <img src="/gokart.jpg" class="align-self-center mr-3" alt="...">
 
 
         <div class="media-body">
-            <h5 class="mt-2">GO Kart</h5>
-            <p class="mb-2">Min alder:</p>
-            <p class="mb-2">Pris</p>
-            <p class="mb-2">Højde</p>
-            <p class="mb-2">Periode</p>
-            <p class="mb-2">Start</p>
-            <p class="mb-2">Slut</p>
-
+            <h5 class="mt-2"><%-activity.name %></h5>
+            <p class="mb-2">Pris: <%-activity.price %></p>
+            <p class="mb-2">Min alder: <%-activity.minAge %></p>
+            <p class="mb-2">Højde: <%-activity.minHeightCm %></p>
+            <p class="mb-2">Periode: <%-activity.minPeriodMin %></p>
+            <p class="mb-2">Start: <%-activity.startTime %></p>
+            <p class="mb-2">Slut: <%-activity.endTime %></p>
+            <button type="button" class="btn btn-outline-success">Book event</button>
+            <button type="button" class="btn btn-outline-success">Slet booking</button>
         </div>
     </div>
 </div>
+</script>

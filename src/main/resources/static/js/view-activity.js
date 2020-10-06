@@ -3,13 +3,14 @@ $(document).ready(() => {
 
     $.ajax({
         type: 'GET',
-        url: '/api/activities',
+        url: '/api/activities/2',
         success: handleResponse,
         dataType: "json"
     });
 
-    function handleResponse(activities) {
+    function handleResponse(activity) {
+            const card_template = $("#activity-card").text();
             const compiler = _.template(card_template);
-            $('#card-container').append(compiler({ activity }));
+            $('#activity-container').append(compiler({ activity }));
     }
 })

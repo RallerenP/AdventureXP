@@ -15,6 +15,11 @@ public class ViewController {
         return "views/home";
     }
 
+    @GetMapping("views/activity")
+    String getActivityView() {
+        return "views/activity";
+    }
+
     @GetMapping("/activities")
     String getActivities() {
         return "index";
@@ -25,4 +30,8 @@ public class ViewController {
         return "index";
     }
 
+    @GetMapping("/activity")
+    String getActivity(){
+        return "index";
+    }
 }
