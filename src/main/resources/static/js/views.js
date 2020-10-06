@@ -40,9 +40,19 @@ $(document).ready(() => {
 
     page('/', (e) => {setView(endpoints.HOME); url = "/"});
     page('/login', (e) => {makeModal(endpoints.LOGIN);});
-    page('/activities/edit/:id', (e) => {setView(endpoints.EDIT_ACTIVITY); url = "/activities/edit/"});
     page('/activities', (e) => {setView(endpoints.ACTIVITIES); url = "/activities"});
-    page('/logout', (e) => { logout();})
+    page('/logout', (e) => { logout();});
+
+    const editAcitivyAuth = async () => {
+        const user = await getUser();
+        if (user !== null && user.role === "Employee") {
+            page('/activities/edit/:id', (e) => {setView(endpoints.EDIT_ACTIVITY); url = "/activities/edit/"});
+        }
+    }
+
+    editAcitivyAuth();
 
     page();
+
+
 })
