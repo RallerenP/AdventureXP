@@ -5,7 +5,8 @@ $(document).ready(() => {
         HOME: "/views/home",
         ACTIVITIES: "/views/activities",
         EDIT_ACTIVITY: "/views/edit-activity",
-        LOGIN: "modals/loginModal.html"
+        LOGIN: "modals/loginModal.html",
+        SIGNUP: "modals/signupModal.html"
     }
 
 
@@ -28,10 +29,10 @@ $(document).ready(() => {
             type: "GET",
             success: (e) => {
                 $(document.body).append(e);
-                $("#login-modal").modal();
-                $("#login-modal").on('hidden.bs.modal', () => {
+                $("#modal").modal();
+                $("#modal").on('hidden.bs.modal', () => {
                     page.redirect(prev);
-                    $('#login-modal').remove();
+                    $('#modal').remove();
                 })
 
             }
@@ -40,6 +41,7 @@ $(document).ready(() => {
 
     page('/', (e) => {setView(endpoints.HOME); url = "/"});
     page('/login', (e) => {makeModal(endpoints.LOGIN);});
+    page('/signup', (e) => {makeModal(endpoints.SIGNUP);});
     page('/activities', (e) => {setView(endpoints.ACTIVITIES); url = "/activities"});
     page('/logout', (e) => { logout();});
 
