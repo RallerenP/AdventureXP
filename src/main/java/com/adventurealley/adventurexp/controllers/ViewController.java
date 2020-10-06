@@ -30,7 +30,7 @@ public class ViewController {
         return "index";
     }
 
-    @GetMapping("/activity")
+    @GetMapping("/activity/**")
     String getActivity(){
         return "index";
     }

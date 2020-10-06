@@ -1,6 +1,9 @@
 <div id="activity-container"></div>
+<script>
+
+</script>
 <script src="/js/view-activity.js"></script>
-<script type="text/template" id="activity-card">
+<script type="text/template" id="activity-page-template">
  <div class="container">
     <div class="media">
         <img src="/gokart.jpg" class="align-self-center mr-3" alt="...">
@@ -24,10 +27,10 @@
 
 <script type="text/template" id="activity-button-template">
     <% if (user.role === "Customer") { %>
-    <button type="button" class="btn btn-outline-success my-2 my-sm-0">Book event</button>
+    <button type="button" class="btn btn-outline-success my-2 my-sm-0">Book activity</button>
     <% } else if (user.role === "Employee") { %>
-    <button type="button" class="btn btn-outline-warning mr-2 my-2 my-sm-0">Update event</button>
-    <button type="button" class="btn btn-outline-danger my-2 my-sm-0">Delete event</button>
+    <button type="button" class="btn btn-outline-warning mr-2 my-2 my-sm-0" id="update-activity-btn" >Update activity</button>
+    <button class="btn btn-outline-danger my-2 my-sm-0">Delete activity</button>
     <% } else { %>
     <% } %>
 </script>
