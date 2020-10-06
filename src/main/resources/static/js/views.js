@@ -4,9 +4,10 @@ $(document).ready(() => {
     const endpoints = {
         HOME: "/views/home",
         ACTIVITIES: "/views/activities",
+        LOGIN: "/modals/loginModal.html",
+        ACTIVITY: "/views/activity",
         EDIT_ACTIVITY: "/views/edit-activity",
-        LOGIN: "modals/loginModal.html",
-        SIGNUP: "modals/signupModal.html"
+        SIGNUP: "/modals/signupModal.html"
     }
 
 
@@ -41,6 +42,7 @@ $(document).ready(() => {
 
     page('/', (e) => {setView(endpoints.HOME); url = "/"});
     page('/login', (e) => {makeModal(endpoints.LOGIN);});
+    page('/activity/:id', (e) => {setView(endpoints.ACTIVITY); url = e.path;});
     page('/signup', (e) => {makeModal(endpoints.SIGNUP);});
     page('/activities', (e) => {setView(endpoints.ACTIVITIES); url = "/activities"});
     page('/logout', (e) => { logout();});

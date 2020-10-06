@@ -15,6 +15,11 @@ public class ViewController {
         return "views/home";
     }
 
+    @GetMapping("views/activity")
+    String getActivityView() {
+        return "views/activity";
+    }
+
     @GetMapping("views/edit-activity")
     String getEditActivityView() {
         return "views/edit-activity";
@@ -27,6 +32,11 @@ public class ViewController {
 
     @GetMapping("/login")
     String login() {
+        return "index";
+    }
+
+    @GetMapping("/activity/**")
+    String getActivity(){
         return "index";
     }
 
