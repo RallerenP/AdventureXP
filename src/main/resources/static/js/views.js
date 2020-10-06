@@ -1,3 +1,5 @@
+let url = "/";
+
 $(document).ready(() => {
     const endpoints = {
         HOME: "/views/home",
@@ -5,7 +7,7 @@ $(document).ready(() => {
         LOGIN: "modals/loginModal.html"
     }
 
-    let url = "/";
+
     let view;
 
     function setView(endpoint) {
@@ -40,8 +42,7 @@ $(document).ready(() => {
     page('/', (e) => {setView(endpoints.HOME); url = "/"});
     page('/activities', (e) => {setView(endpoints.ACTIVITIES); url = "/activities"});
     page('/login', (e) => {makeModal(endpoints.LOGIN);});
-
-
+    page('/logout', (e) => { logout();})
 
     page();
 })
