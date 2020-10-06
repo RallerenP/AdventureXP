@@ -4,6 +4,7 @@ $(document).ready(() => {
     const endpoints = {
         HOME: "/views/home",
         ACTIVITIES: "/views/activities",
+        EDIT_ACTIVITY: "/views/edit-activity",
         LOGIN: "modals/loginModal.html"
     }
 
@@ -11,16 +12,14 @@ $(document).ready(() => {
     let view;
 
     function setView(endpoint) {
-        console.log("Previous: ", view)
         if (view === endpoint) return;
         $.ajax(endpoint, {
             type: "GET",
             success: (e) => {
                 $('#content-container').html(e);
-            }
+            },
         });
         view = endpoint;
-        console.log("New", view)
     }
 
     function makeModal(endpoint) {
@@ -40,9 +39,20 @@ $(document).ready(() => {
     }
 
     page('/', (e) => {setView(endpoints.HOME); url = "/"});
-    page('/activities', (e) => {setView(endpoints.ACTIVITIES); url = "/activities"});
     page('/login', (e) => {makeModal(endpoints.LOGIN);});
-    page('/logout', (e) => { logout();})
+    page('/activities', (e) => {setView(endpoints.ACTIVITIES); url = "/activities"});
+    page('/logout', (e) => { logout();});
+
+    const editAcitivyAuth = async () => {
+        const user = await getUser();
+        if (user !== null && user.role === "Employee") {
+            page('/activities/edit/:id', (e) => {setView(endpoints.EDIT_ACTIVITY); url = "/activities/edit/"});
+        }
+    }
+
+    editAcitivyAuth();
 
     page();
+
+
 })
