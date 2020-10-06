@@ -25,12 +25,13 @@
     </div>
 </div>
 <script type="text/javascript">
+
     $('#login-button').click(() => {
         const logindata = { username: $('#usernameInput').val(), password: $('#passwordInput').val()}
-        $.ajax("/api/login", {
+        $.ajax("/api/users/login", {
             type: "POST",
-            success: (e) => {
-                console.log("nice")
+            success: async (e) => {
+                window.location = url
             },
             data: JSON.stringify(logindata),
             contentType: "application/json"

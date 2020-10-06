@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @RestController
 public class UserController {
@@ -23,15 +27,22 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/api/signup")
+    @PostMapping("/api/users/signup")
     ResponseEntity<String> signup(@RequestBody SignupDTO signupDTO) {
         //Create DTO and send down to DB through service layer
         userService.createUser(signupDTO);
         return new ResponseEntity<>("success", HttpStatus.CREATED);
     }
 
-    @PostMapping("/api/login")
-    ResponseEntity<String> login(@RequestBody LoginDTO loginDTO, HttpSession session) {
+    @GetMapping("/api/users")
+    ResponseEntity<String> getUser(HttpSession session) {
+        User u = (User) session.getAttribute("user");
+        if (u == null) return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        else return new ResponseEntity<>(u.toJSON().toString(), HttpStatus.OK);
+    }
+
+    @PostMapping("/api/users/login")
+    ResponseEntity<String> login(@RequestBody LoginDTO loginDTO, HttpSession session, HttpServletResponse response) {
         User u = userService.authenticateUser(loginDTO);
         if (u == null) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -39,6 +50,12 @@ public class UserController {
             session.setAttribute("user", u);
             return new ResponseEntity<>(u.toJSON().toString(), HttpStatus.OK);
         }
+    }
+
+    @GetMapping("/api/users/logout")
+    ResponseEntity<String> logout(HttpSession session) {
+        session.removeAttribute("user");
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
