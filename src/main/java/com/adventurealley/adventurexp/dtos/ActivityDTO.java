@@ -57,10 +57,19 @@ public class ActivityDTO {
         this.startTime = startTime;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     private String name;
     private int minAge;
     private int minHeightCm;
     private int minPeriodMin;
+    private String image;
     private double price;
     private String endTime;
     private String startTime;

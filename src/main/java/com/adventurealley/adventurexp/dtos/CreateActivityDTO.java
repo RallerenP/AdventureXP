@@ -5,6 +5,7 @@ public class CreateActivityDTO {
     private int minAge;
     private int minHeight;
     private int minPeriodMin;
+    private String image;
     private double price;
     private String startTime;
     private String endTime;
@@ -77,5 +78,13 @@ public class CreateActivityDTO {
     public void setEndTime(String endTime)
     {
         this.endTime = endTime;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
