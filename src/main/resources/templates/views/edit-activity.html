@@ -47,14 +47,12 @@
 </script>
 
 <script type="text/javascript">
-    const url = location.href;
-    const id = url.substring(url.lastIndexOf('/') + 1, url.length);
-
-    console.log(id)
+    const edit_activity_url = location.href;
+    const edit_avtivity_id = edit_activity_url.substring(edit_activity_url.lastIndexOf('/') + 1, edit_activity_url.length);
 
     $.ajax({
         type: 'GET',
-        url: `/api/activities/${id}`,
+        url: `/api/activities/${edit_avtivity_id}`,
         success: handleResponse,
         dataType: "json"
     });
@@ -64,7 +62,7 @@
 
         const compiler = _.template(template);
 
-        $('#form-template').html(compiler({ activity, success: false }));
+        $('#form-template').append(compiler({ activity, success: false }));
 
         function submitto() {
             console.log("asdasdsa")
@@ -77,9 +75,7 @@
 
             const data = { name, minAge, minHeight, price, startTime, endTime }
 
-            console.log(data)
-
-            $.ajax(`/api/activities/${id}`, {
+            $.ajax(`/api/activities/${edit_avtivity_id}`, {
                 type: "PUT",
                 contentType: "application/json",
                 data: JSON.stringify(data),
