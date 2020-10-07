@@ -21,6 +21,7 @@ public class Activity implements JSONable {
     private String name;
     private int minAge;
     private int minHeightCM;
+    private String image;
     private double price;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -81,6 +82,14 @@ public class Activity implements JSONable {
         this.endTime = endTime;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
     @Override
     public String toString()
     {
@@ -89,6 +98,7 @@ public class Activity implements JSONable {
                 ", name='" + name + '\'' +
                 ", minAge=" + minAge +
                 ", minHeightCM=" + minHeightCM +
+                ", image= " + image +
                 ", price=" + price +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
@@ -101,6 +111,7 @@ public class Activity implements JSONable {
         json.put("name", getName());
         json.put("minAge", getMinAge());
         json.put("minHeightCm", getMinHeightCM());
+        json.put("image", getImage());
         json.put("price", getPrice());
         json.put("startTime", getStartTime().format(formatter));
         json.put("endTime", getEndTime().format(formatter));

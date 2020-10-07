@@ -6,6 +6,7 @@ public class DeleteActivityDTO {
     private int minAge;
     private int minHeight;
     private int minPeriodMin;
+    private String image;
     private double price;
     private String startTime;
     private String endTime;
@@ -87,5 +88,14 @@ public class DeleteActivityDTO {
     {
         this.endTime = endTime;
     }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
 }
 

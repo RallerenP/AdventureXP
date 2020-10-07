@@ -28,6 +28,7 @@ public class ActivityService implements IActivityService {
         a.setName(createActivityDto.getName());
         a.setMinAge(createActivityDto.getMinAge());
         a.setMinHeightCM(createActivityDto.getMinHeight());
+        a.setImage(createActivityDto.getImage());
         a.setPrice(createActivityDto.getPrice());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -65,6 +66,7 @@ public class ActivityService implements IActivityService {
         activity.setName(editActivityDTO.getName());
         activity.setMinAge(editActivityDTO.getMinAge());
         activity.setMinHeightCM(editActivityDTO.getMinHeight());
+        activity.setImage(editActivityDTO.getImage());
         activity.setPrice(editActivityDTO.getPrice());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
