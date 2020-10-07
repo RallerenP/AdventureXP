@@ -4,25 +4,27 @@
 </script>
 <script src="/js/view-activity.js"></script>
 <script type="text/template" id="activity-page-template">
- <div class="container">
-    <div class="media" style="width:700px">
-        <img src="<%- activity.image %>" class="align-self-center mr-3" alt="...">
+    <div class="backgroundcolor">
+        <div class="container">
+            <div class="media" style="width:700px">
+                <img src="<%- activity.image %>" class="align-self-center mr-3" alt="...">
 
 
-        <div class="media-body">
-            <h5 class="mt-2"><%-activity.name %></h5>
-            <p class="mb-2">Pris: <%-activity.price %></p>
-            <p class="mb-2">Min alder: <%-activity.minAge %></p>
-            <p class="mb-2">Højde: <%-activity.minHeightCm %></p>
-            <p class="mb-2">Periode: <%-activity.minPeriodMin %></p>
-            <p class="mb-2">Start: <%-activity.startTime %></p>
-            <p class="mb-2">Slut: <%-activity.endTime %></p>
-            <div class="form-inline my-2 my-lg-0" id="activity-button-container">
+                <div class="media-body">
+                    <h5 class="mt-2"><%-activity.name %></h5>
+                    <p class="mb-2">Pris: <%-activity.price %></p>
+                    <p class="mb-2">Min alder: <%-activity.minAge %></p>
+                    <p class="mb-2">Højde: <%-activity.minHeightCm %></p>
+                    <p class="mb-2">Start: <%-activity.startTime %></p>
+                    <p class="mb-2">Slut: <%-activity.endTime %></p>
+                    <div class="form-inline my-2 my-lg-0" id="activity-button-container">
 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 </script>
 
 <script type="text/template" id="activity-button-template">
