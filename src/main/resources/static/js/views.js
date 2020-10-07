@@ -7,7 +7,8 @@ $(document).ready(() => {
         LOGIN: "/modals/loginModal.html",
         ACTIVITY: "/views/activity",
         EDIT_ACTIVITY: "/views/edit-activity",
-        SIGNUP: "/modals/signupModal.html"
+        SIGNUP: "/modals/signupModal.html",
+        CREATE_ACTIVITY: "/views/create-activity"
     }
 
 
@@ -53,6 +54,7 @@ $(document).ready(() => {
     page('/signup', (e) => {makeModal(endpoints.SIGNUP);});
     page('/activities/edit/:id', (e) => {setView(endpoints.EDIT_ACTIVITY); url = e.path;});
     page('/activities', (e) => {setView(endpoints.ACTIVITIES); url = "/activities"});
+    page('/activities/create', (e) => {setView(endpoints.CREATE_ACTIVITY); url = "/activities/create"});
     page('/logout', (e) => { logout();});
 
 

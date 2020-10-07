@@ -25,6 +25,9 @@ public class ViewController {
         return "views/edit-activity";
     }
 
+    @GetMapping("views/create-activity")
+    String getCreateActivityView() {return "views/create-activity";}
+
     @GetMapping("/activities")
     String getActivities() {
         return "index";
@@ -44,4 +47,7 @@ public class ViewController {
     String editActivity() {
         return "index";
     }
+
+    @GetMapping("/activities/create")
+    String createActivity() {return "index";}
 }
