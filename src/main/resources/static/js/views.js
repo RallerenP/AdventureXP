@@ -40,21 +40,22 @@ $(document).ready(() => {
         });
     }
 
+    const editAcitivyAuth = async () => {
+        const user = await getUser();
+        if (user !== null && user.role === "Employee") {
+        }
+    }
+
+
     page('/', (e) => {setView(endpoints.HOME); url = "/"});
     page('/login', (e) => {makeModal(endpoints.LOGIN);});
     page('/activity/:id', (e) => {setView(endpoints.ACTIVITY); url = e.path;});
     page('/signup', (e) => {makeModal(endpoints.SIGNUP);});
+    page('/activities/edit/:id', (e) => {setView(endpoints.EDIT_ACTIVITY); url = e.path;});
     page('/activities', (e) => {setView(endpoints.ACTIVITIES); url = "/activities"});
     page('/logout', (e) => { logout();});
 
-    const editAcitivyAuth = async () => {
-        const user = await getUser();
-        if (user !== null && user.role === "Employee") {
-            page('/activities/edit/:id', (e) => {setView(endpoints.EDIT_ACTIVITY); url = "/activities/edit/"});
-        }
-    }
 
-    editAcitivyAuth();
 
     page();
 
